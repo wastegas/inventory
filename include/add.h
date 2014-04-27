@@ -3,6 +3,6 @@
 
 #include "product.h"
 
-void add(Product*, unsigned int, char*, double, double);
+void add();
 
 #endif
