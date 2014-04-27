@@ -17,7 +17,8 @@ $(TARGET):	$(SDIR)/main.c	$(LTARGET).dylib
 
 _LOBJ=	\
 		add.o	\
-		print.o
+		print.o	\
+		menu.o
 
 LOBJ=	$(patsubst	%,$(LDIR)/%,$(_LOBJ))
 

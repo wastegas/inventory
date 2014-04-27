@@ -1,14 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "product.h"
-#include "add.h"
-#include "print.h"
+#include "menu.h"
 
 int main(void) {
 
-    add();
-    print();
+    menu();
 
     return 0;
 }
