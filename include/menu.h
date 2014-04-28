@@ -5,6 +5,7 @@
 #include "product.h"
 #include "add.h"
 #include "print.h"
+#include "delete.h"
 
 void menu();
 

@@ -2,6 +2,7 @@
 
 enum {
     ADD = 1,
+    DELETE,
     PRINT,
     QUIT
 };
@@ -12,7 +13,7 @@ void menu() {
 
     while ( choice != QUIT ) {
 
-        printf("1 - Add | 2 - Print | 3 - Quit\n");
+        printf("1 - Add | 2 = Delete | 3 - Print | 4 - Quit\n");
         scanf("%d", &choice);
 
         switch (choice) {
@@ -20,8 +21,10 @@ void menu() {
                 add();
                 break;
             case PRINT:
-                choice=' ';
                 print();
+                break;
+            case DELETE:
+                delete();
                 break;
             case QUIT:
                 return;
