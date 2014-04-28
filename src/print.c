@@ -4,7 +4,7 @@
 #include <errno.h>
 #include "print.h"
 
-void print(Product* p) {
+void print() {
     Product* _p = malloc(sizeof(*_p));
     if (_p == NULL) {
         fprintf(stderr, "malloc() error %s\n", strerror(errno));
