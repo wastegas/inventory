@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 #include <string.h>
 #include "add.h"
 
@@ -8,8 +9,8 @@ void add() {
     char name[25];
     Product* _p = malloc(sizeof(*_p));
     if ( _p == NULL ) {
-        printf("malloc() failed\n");
-        exit(1);
+        fprintf(stderr, "malloc() failed %s\n", strerror(errno));
+        exit(EXIT_FAILURE);
     }
 
     printf("\nProduct ID\t:");
@@ -24,8 +25,8 @@ void add() {
 
     FILE* fp = fopen("data.dat", "ab");
     if (!fp) {
-       perror("unable to open 'data.dat' for writing\n");
-       exit(1);
+       fprintf(stderr, "unable to open 'data.dat' for writing %s\n", strerror(errno));
+       exit(EXIT_FAILURE);
     }
     
     fwrite(_p, sizeof(Product), 1, fp);

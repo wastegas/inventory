@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
+#include <string.h>
 #include "delete.h"
 
 void delete() {
@@ -10,8 +12,8 @@ void delete() {
 
     Product* _p = malloc(sizeof(*_p));
     if (_p == NULL){
-        perror("malloc() failed\n");
-        exit(1);
+        fprintf(stderr, "%s\n",strerror(errno));
+        exit(EXIT_FAILURE);
     }
 
     FILE* fp;
@@ -19,14 +21,14 @@ void delete() {
 
     fp = fopen("data.dat", "rb");
     if (!fp) {
-        perror("unable to open file for reading\n");
-        exit(1);
+        fprintf(stderr, "unable to open file for reading, %s\n", strerror(errno));
+        exit(EXIT_FAILURE);
     }
 
     fp_tmp = fopen("tmp.dat", "ab");
     if (!fp_tmp) {
-        perror("unable to open temp file for writing\n");
-        exit(1);
+        fprintf(stderr, "unable to open temp file for writing, %s\n", strerror(errno));
+        exit(EXIT_FAILURE);
     }
 
     while (fread(_p, sizeof(Product), 1, fp)) {
