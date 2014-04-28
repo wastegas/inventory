@@ -19,6 +19,9 @@ _LOBJ=	\
 		add.o	\
 		print.o	\
 		delete.o	\
+		edit.o	\
+		search.o	\
+		printone.o	\
 		menu.o
 
 LOBJ=	$(patsubst	%,$(LDIR)/%,$(_LOBJ))

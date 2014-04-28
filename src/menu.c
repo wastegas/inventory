@@ -2,6 +2,8 @@
 
 enum {
     ADD = 1,
+    SEARCH,
+    EDIT,
     DELETE,
     PRINT,
     QUIT
@@ -9,30 +11,42 @@ enum {
 
 void menu() {
 
-    int choice;
+    char choice;
 
-    while ( choice != QUIT ) {
+    while ( choice != 'q' || choice != 'Q' ) {
 
-        printf("1 - Add | 2 = Delete | 3 - Print | 4 - Quit\n");
-        scanf("%d", &choice);
+        printf("A - Add | S = Search | E = Edit | D - Delete | P - Print | Q - Quit\n");
+        scanf(" %c", &choice);
 
         switch (choice) {
-            case ADD:
+            case 'a':
+            case 'A':
                 add();
                 break;
-            case PRINT:
+            case 's':
+            case 'S':
+                search();
+                break;
+            case 'e':
+            case 'E':
+                edit();
+                break;
+            case 'p':
+            case 'P':
                 print();
                 break;
-            case DELETE:
+            case 'd':
+            case 'D':
                 delete();
                 break;
-            case QUIT:
+            case 'q':
+            case 'Q':
                 return;
             default:
-                printf("%d is an invalid choice\n", choice);
+                printf("%c is an invalid choice\n", choice);
                 break;
         }
-        getchar();
+        //getchar();
     }
 
 }

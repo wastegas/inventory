@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include "product.h"
 #include "add.h"
+#include "search.h"
+#include "edit.h"
 #include "print.h"
 #include "delete.h"
 
