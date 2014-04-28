@@ -1,14 +1,5 @@
 #include "menu.h"
 
-enum {
-    ADD = 1,
-    SEARCH,
-    EDIT,
-    DELETE,
-    PRINT,
-    QUIT
-};
-
 void menu() {
 
     char choice;
@@ -46,7 +37,6 @@ void menu() {
                 printf("%c is an invalid choice\n", choice);
                 break;
         }
-        //getchar();
     }
 
 }
