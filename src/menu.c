@@ -6,7 +6,7 @@ void menu() {
 
     while ( choice != 'q' || choice != 'Q' ) {
 
-        printf("A - Add | S = Search | E = Edit | D - Delete | P - Print | Q - Quit\n");
+        printf("\nA - Add | S = Search | E = Edit | D - Delete | P - Print | Q - Quit -> ");
         scanf(" %c", &choice);
 
         switch (choice) {
