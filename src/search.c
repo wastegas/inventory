@@ -47,7 +47,7 @@ void search() {
 
     } else {
 
-        printf("record was not found for editing\n");
+        printf("No record found for product id %d\n", id);
 
     }
 
