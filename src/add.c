@@ -15,12 +15,12 @@ void add() {
 
     printf("\nProduct ID\t:");
     scanf("%u", &(_p->pid));
-    printf("Product Name:\t");
+    printf("Product Name\t:");
     scanf("%s", name);
     strcpy(_p->pname, name);
-    printf("Product Price:\t");
+    printf("Product Price\t:");
     scanf("%lf", &(_p->price));
-    printf("Product Qty:\t");
+    printf("Product Qty\t:");
     scanf("%lf", &(_p->qty));
 
     FILE* fp = fopen("data.dat", "ab");
