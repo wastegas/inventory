@@ -4,6 +4,8 @@
 #include <string.h>
 #include "add.h"
 
+static void writerecord(Product*);
+
 void add() {
 
     char name[25];
@@ -23,7 +25,15 @@ void add() {
     printf("Product Qty\t:");
     scanf("%lf", &(_p->qty));
 
+    writerecord(_p);
+
+    free(_p);
+}
+
+static void writerecord(Product* _p) {
+
     FILE* fp = fopen("data.dat", "ab");
+    
     if (!fp) {
        fprintf(stderr, "unable to open 'data.dat' for writing %s\n", strerror(errno));
        exit(EXIT_FAILURE);
@@ -31,5 +41,4 @@ void add() {
     
     fwrite(_p, sizeof(Product), 1, fp);
     fclose(fp);
-    free(_p);
 }
