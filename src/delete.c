@@ -4,14 +4,13 @@
 #include <string.h>
 #include "delete.h"
 
-void delete() {
+void delete()
+{
     unsigned int id;
     int found = 0;
-    printf("Enter product id to delete:");
-    scanf("%d", &id);
 
     Product* _p = malloc(sizeof(*_p));
-    if (_p == NULL){
+    if (_p == NULL) {
         fprintf(stderr, "%s\n",strerror(errno));
         exit(EXIT_FAILURE);
     }
@@ -21,15 +20,20 @@ void delete() {
 
     fp = fopen("data.dat", "rb");
     if (!fp) {
-        fprintf(stderr, "unable to open file for reading, %s\n", strerror(errno));
+        fprintf(stderr, "unable to open file for reading, %s\n", 
+                strerror(errno));
         exit(EXIT_FAILURE);
     }
 
     fp_tmp = fopen("tmp.dat", "ab");
     if (!fp_tmp) {
-        fprintf(stderr, "unable to open temp file for writing, %s\n", strerror(errno));
+        fprintf(stderr, "unable to open temp file for writing, %s\n", 
+                strerror(errno));
         exit(EXIT_FAILURE);
     }
+
+    printf("Enter product id to delete:");
+    scanf("%d", &id);
 
     while (fread(_p, sizeof(Product), 1, fp)) {
         if (_p->pid == id) {

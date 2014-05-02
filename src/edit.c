@@ -4,7 +4,8 @@
 #include <string.h>
 #include "edit.h"
 
-void edit() {
+void edit()
+{
 
     unsigned int    id;
     char            name[25];
@@ -21,7 +22,8 @@ void edit() {
 
     FILE* fp = fopen("data.dat", "r+b");
     if (!fp) {
-        fprintf(stderr, "unable top open file for reading, %s\n", strerror(errno));
+        fprintf(stderr, "unable top open file for reading, %s\n", 
+                strerror(errno));
         exit(EXIT_FAILURE);
     }
 
