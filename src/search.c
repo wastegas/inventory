@@ -3,9 +3,11 @@
 #include <errno.h>
 #include <string.h>
 #include "search.h"
-#include "printone.h"
 
-void search() {
+static void printone(Product*);
+
+void search()
+{
 
     unsigned int    id;
     int             found = 0;
@@ -21,7 +23,8 @@ void search() {
     FILE* fp = fopen("data.dat", "rb");
     if (!fp) {
 
-        fprintf(stderr, "unable top open file for reading, %s\n", strerror(errno));
+        fprintf(stderr, "unable top open file for reading, %s\n", 
+                strerror(errno));
         exit(EXIT_FAILURE);
 
     }
@@ -52,5 +55,14 @@ void search() {
     }
 
     free(_p);
+
+}
+
+void printone(Product* _p) {
+
+        printf("\nProduct ID   :\t%d\n", _p->pid);
+        printf("Product Name :\t%s\n", _p->pname);
+        printf("Product price:\t%4.2f\n", _p->price);
+        printf("Product Qty  :\t%4.2f\n", _p->qty);
 
 }
