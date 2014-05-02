@@ -6,11 +6,12 @@
 
 static void writerecord(Product*);
 
-void add() {
+void add()
+{
 
     char name[25];
     Product* _p = malloc(sizeof(*_p));
-    if ( _p == NULL ) {
+    if (_p == NULL ){
         fprintf(stderr, "malloc() failed %s\n", strerror(errno));
         exit(EXIT_FAILURE);
     }
@@ -30,12 +31,14 @@ void add() {
     free(_p);
 }
 
-static void writerecord(Product* _p) {
+static void writerecord(Product* _p)
+{
 
     FILE* fp = fopen("data.dat", "ab");
     
     if (!fp) {
-       fprintf(stderr, "unable to open 'data.dat' for writing %s\n", strerror(errno));
+       fprintf(stderr, "unable to open 'data.dat' for writing %s\n", 
+               strerror(errno));
        exit(EXIT_FAILURE);
     }
     
