@@ -21,6 +21,7 @@ _LOBJ=	\
 		delete.o	\
 		edit.o	\
 		search.o	\
+		openfile.o	\
 		menu.o
 
 LOBJ=	$(patsubst	%,$(LDIR)/%,$(_LOBJ))
