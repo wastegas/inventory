@@ -27,13 +27,9 @@ FILE *openFile(const char *file, int option)
         break;
     }
 
-    printf("mode is %s\n", mode);
-
     if ((inFile = fopen(file, mode)) == NULL) {
         fprintf (stderr, "Con't open %s for read/write.\n", file);
         exit (EXIT_FAILURE);
-    } else {
-        printf("file opened successfuly\n");
     }
 
     free(mode);
