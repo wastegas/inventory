@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <string.h>
 #include "search.h"
+#include "openfile.h"
 
 static void printone(Product*);
 
@@ -20,14 +21,7 @@ void search()
 
     }
 
-    FILE* fp = fopen("data.dat", "rb");
-    if (!fp) {
-
-        fprintf(stderr, "unable top open file for reading, %s\n", 
-                strerror(errno));
-        exit(EXIT_FAILURE);
-
-    }
+    FILE *fp = openFile("data.dat");
 
     printf("Enter product id to display:");
     scanf("%d", &id);
