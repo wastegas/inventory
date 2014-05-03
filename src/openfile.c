@@ -18,8 +18,8 @@ FILE *openFile(const char *file, int option)
         strcpy (mode, "rb");
         break;
     case WRITING:
-        mode = malloc(strlen("rb+") + 1);
-        strcpy (mode, "rb+");
+        mode = malloc(strlen("r+b") + 1);
+        strcpy (mode, "r+b");
         break;
     default:
         fprintf (stderr, "Invalid file mode operation\n");
