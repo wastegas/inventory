@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <string.h>
 #include "add.h"
+#include "openfile.h"
 
 static void writerecord(Product*);
 
@@ -33,7 +34,7 @@ void add()
 
 static void writerecord(Product* _p)
 {
-
+/*
     FILE* fp = fopen("data.dat", "ab");
     
     if (!fp) {
@@ -41,7 +42,15 @@ static void writerecord(Product* _p)
                strerror(errno));
        exit(EXIT_FAILURE);
     }
+ */   
+    FILE *fp = openFile("data.dat", APPENDING);
     
-    fwrite(_p, sizeof(Product), 1, fp);
+    if ((fwrite(_p, sizeof(Product), 1, fp)) < 1) {
+        fprintf (stderr, "error appending record");
+        free(_p);
+        fclose(fp);
+        exit(EXIT_FAILURE);
+    }
+
     fclose(fp);
 }
