@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <string.h>
 #include "edit.h"
+#include "openfile.h"
 
 void edit()
 {
@@ -19,13 +20,15 @@ void edit()
         fprintf(stderr, "%s\n", strerror(errno));
         exit(EXIT_FAILURE);
     }
-
+/*
     FILE* fp = fopen("data.dat", "r+b");
     if (!fp) {
         fprintf(stderr, "unable top open file for reading, %s\n", 
                 strerror(errno));
         exit(EXIT_FAILURE);
     }
+*/
+    FILE *fp = openFile("data.dat", WRITING);
 
     printf("Enter product id to edit:");
     scanf("%d", &id);
