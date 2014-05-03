@@ -21,7 +21,7 @@ void search()
 
     }
 
-    FILE *fp = openFile("data.dat");
+    FILE *fp = openFile("data.dat", READING);
 
     printf("Enter product id to display:");
     scanf("%d", &id);
