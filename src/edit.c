@@ -2,19 +2,23 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <stdbool.h>
 #include "edit.h"
 #include "openfile.h"
+
+
+static bool editval();
 
 void edit()
 {
 
-    unsigned int    id;
-    char            name[25];
-    double          p;
-    double          q;
+    unsigned int    id;         // product id
+    char            name[25];   // product name
+    double          p;          // product price
+    double          q;          // product quantity
     int             found = 0;
-    long            pos = 0;
-   
+    long            pos = 0;    // file position
+
     Product* _p = malloc(sizeof(*_p));
     if (_p == NULL) {
         fprintf(stderr, "%s\n", strerror(errno));
@@ -43,26 +47,35 @@ void edit()
 
     }
 
+    getchar();
+
     if (found) {
 
-        fseek(fp, pos - sizeof(Product), SEEK_SET); 
 
-        printf("Product name : (%s) ", _p->pname);
-        scanf("%s", name);
-        if (strcmp(name, _p->pname) != 0) {
-            strcpy(_p->pname, name);
+        printf("Product name : (%s) Edit(y/n)? ", _p->pname);
+        if (editval()) {
+            printf("Enter new value: ");
+            scanf("%s", name);
+            if (strcmp(name, _p->pname) != 0) {
+                strcpy(_p->pname, name);
+            }
         }
-        printf("Product Price: (%4.2f) ", _p->price);
-        scanf("%lf", &p);
-        if (_p->price != p) {
+        getchar();
+        printf("Product Price: (%4.2f) Edit(y/n)? ", _p->price);
+        if (editval()) {
+            printf("Enter new value: ");
+            scanf("%lf", &p);
             _p->price = p;
         }
-        printf("Product Qty  : (%4.2f) ", _p->qty);
-        scanf("%lf", &q);
-        if (_p->qty != q) {
+        getchar();
+        printf("Product Qty  : (%4.2f) Edit(y/n)? ", _p->qty);
+        if (editval()) {
+            printf("Enter new value: ");
+            scanf("%lf", &q);
             _p->qty = q;
         }
 
+        fseek(fp, pos - sizeof(Product), SEEK_SET); 
         fwrite(_p, sizeof(Product), 1, fp);
     } else {
 
@@ -73,4 +86,15 @@ void edit()
     fclose(fp);
     free(_p);
 
+}
+
+static bool editval()
+{
+    int y;
+    y = getchar();
+    if (y == 'y' || y == 'Y') {
+        getchar();
+        return true;
+    } 
+        return false;
 }
