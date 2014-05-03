@@ -1,6 +1,12 @@
 #ifndef _OPENFILE_H_
 #define _OPENFILE_H_
 
-FILE *openFile(const char*);
+enum {
+    APPENDING,
+    READING,
+    WRITING
+};
+
+FILE *openFile(const char*, int);
 
 #endif
