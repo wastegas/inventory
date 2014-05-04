@@ -18,21 +18,7 @@ void delete()
 
     FILE* fp = openFile("data.dat", READING);
     FILE* fp_tmp = openFile("tmp.dat", APPENDING);
-/*
-    fp = fopen("data.dat", "rb");
-    if (!fp) {
-        fprintf(stderr, "unable to open file for reading, %s\n", 
-                strerror(errno));
-        exit(EXIT_FAILURE);
-    }
 
-    fp_tmp = fopen("tmp.dat", "ab");
-    if (!fp_tmp) {
-        fprintf(stderr, "unable to open temp file for writing, %s\n", 
-                strerror(errno));
-        exit(EXIT_FAILURE);
-    }
-*/
     printf("Enter product id to delete:");
     scanf("%d", &id);
 
