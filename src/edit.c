@@ -64,12 +64,14 @@ void edit()
         getchar();
         printf("Product Price: (%4.2f) Edit(y/n)? ", _p->price);
         if (editval()) {
-            _p->price = getnumber();
+            printf("Enter new Value: ");
+            _p->price = getdouble();
         }
         getchar();
         printf("Product Qty  : (%4.2f) Edit(y/n)? ", _p->qty);
         if (editval()) {
-            _p->qty = getnumber();
+            printf("Enter new Value: ");
+            _p->qty = getdouble();
         }
 
         fseek(fp, pos - sizeof(Product), SEEK_SET); 
