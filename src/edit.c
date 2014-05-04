@@ -8,14 +8,13 @@
 
 
 static bool editval();
+static double getnumber();
 
 void edit()
 {
 
     unsigned int    id;         // product id
     char            name[25];   // product name
-    double          p;          // product price
-    double          q;          // product quantity
     int             found = 0;
     long            pos = 0;    // file position
 
@@ -63,16 +62,12 @@ void edit()
         getchar();
         printf("Product Price: (%4.2f) Edit(y/n)? ", _p->price);
         if (editval()) {
-            printf("Enter new value: ");
-            scanf("%lf", &p);
-            _p->price = p;
+            _p->price = getnumber();
         }
         getchar();
         printf("Product Qty  : (%4.2f) Edit(y/n)? ", _p->qty);
         if (editval()) {
-            printf("Enter new value: ");
-            scanf("%lf", &q);
-            _p->qty = q;
+            _p->qty = getnumber();
         }
 
         fseek(fp, pos - sizeof(Product), SEEK_SET); 
@@ -97,4 +92,18 @@ static bool editval()
         return true;
     } 
         return false;
+}
+
+static double getnumber()
+{
+    double input;
+    while (1) {
+        printf("Enter new value: ");
+        if (scanf("%lf", &input) == 1 ) {
+            return input;
+        } else {
+            printf("Invalid input...\n");
+            getchar();
+        }
+    }
 }
