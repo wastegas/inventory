@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include "edit.h"
 #include "openfile.h"
-#include "getnumber.h"
+#include "getinput.h"
 
 
 static bool editval();
@@ -56,10 +56,8 @@ void edit()
         printf("Product name : (%s) Edit(y/n)? ", _p->pname);
         if (editval()) {
             printf("Enter new value: ");
-            scanf("%s", name);
-            if (strcmp(name, _p->pname) != 0) {
-                strcpy(_p->pname, name);
-            }
+            getstr(name);
+            strcpy(_p->pname, name);
         }
         getchar();
         printf("Product Price: (%4.2f) Edit(y/n)? ", _p->price);

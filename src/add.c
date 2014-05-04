@@ -4,7 +4,7 @@
 #include <string.h>
 #include "add.h"
 #include "openfile.h"
-#include "getnumber.h"
+#include "getinput.h"
 
 static void writerecord(Product*);
 
@@ -19,16 +19,13 @@ void add()
     }
 
     printf("\nProduct ID\t:");
-    //scanf("%u", &(_p->pid));
     _p->pid = getint();
     printf("Product Name\t:");
-    scanf("%s", name);
+    getstr(name);
     strcpy(_p->pname, name);
     printf("Product Price\t:");
-    //scanf("%lf", &(_p->price));
     _p->price = getdouble();
     printf("Product Qty\t:");
-    //scanf("%lf", &(_p->qty));
     _p->qty = getdouble();
 
     writerecord(_p);
