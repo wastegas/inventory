@@ -7,16 +7,26 @@
 #include "getinput.h"
 
 static void writerecord(Product*);
+static Product *dataEntry(Product*);
+
 
 void add()
 {
 
-    char name[25];
     Product* _p = malloc(sizeof(*_p));
     if (_p == NULL ){
         fprintf(stderr, "malloc() failed %s\n", strerror(errno));
         exit(EXIT_FAILURE);
     }
+
+    writerecord(dataEntry(_p));
+
+    free(_p);
+}
+
+static Product *dataEntry(Product *_p)
+{
+    char name[25];
 
     printf("\nProduct ID\t:");
     _p->pid = getint();
@@ -28,9 +38,7 @@ void add()
     printf("Product Qty\t:");
     _p->qty = getdouble();
 
-    writerecord(_p);
-
-    free(_p);
+   return _p;
 }
 
 static void writerecord(Product* _p)
