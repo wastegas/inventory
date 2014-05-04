@@ -9,7 +9,6 @@
 static void writerecord(Product*);
 static Product *dataEntry(Product*);
 
-
 void add()
 {
 
@@ -43,15 +42,6 @@ static Product *dataEntry(Product *_p)
 
 static void writerecord(Product* _p)
 {
-/*
-    FILE* fp = fopen("data.dat", "ab");
-    
-    if (!fp) {
-       fprintf(stderr, "unable to open 'data.dat' for writing %s\n", 
-               strerror(errno));
-       exit(EXIT_FAILURE);
-    }
- */   
     FILE *fp = openFile("data.dat", APPENDING);
     
     if ((fwrite(_p, sizeof(Product), 1, fp)) < 1) {
