@@ -7,12 +7,9 @@
 #include "openfile.h"
 #include "getinput.h"
 
-
 static bool editval();
 static Product *dataEntry(Product*);
-/*
- static double getnumber();
-*/
+
 void edit()
 {
 
@@ -25,27 +22,18 @@ void edit()
         fprintf(stderr, "%s\n", strerror(errno));
         exit(EXIT_FAILURE);
     }
-/*
-    FILE* fp = fopen("data.dat", "r+b");
-    if (!fp) {
-        fprintf(stderr, "unable top open file for reading, %s\n", 
-                strerror(errno));
-        exit(EXIT_FAILURE);
-    }
-*/
+
     FILE *fp = openFile("data.dat", WRITING);
 
     printf("Enter product id to edit:");
-    scanf("%d", &id);
+    id = getint();
 
     while (fread(_p, sizeof(Product), 1, fp)) {
-
         if (_p->pid == id) {
             pos = ftell(fp);
             found = 1;
             break;
         }
-
     }
 
     getchar();
@@ -99,21 +87,4 @@ static Product *dataEntry(Product* _p)
     }
 
     return _p;
-
 }
-
-/*
-static double getnumber()
-{
-    double input;
-    while (1) {
-        printf("Enter new value: ");
-        if (scanf("%lf", &input) == 1 ) {
-            return input;
-        } else {
-            printf("Invalid input...\n");
-            getchar();
-        }
-    }
-}
-*/
