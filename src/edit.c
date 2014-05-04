@@ -9,6 +9,7 @@
 
 
 static bool editval();
+static Product *dataEntry(Product*);
 /*
  static double getnumber();
 */
@@ -16,7 +17,6 @@ void edit()
 {
 
     unsigned int    id;         // product id
-    char            name[25];   // product name
     int             found = 0;
     long            pos = 0;    // file position
 
@@ -51,29 +51,8 @@ void edit()
     getchar();
 
     if (found) {
-
-
-        printf("Product name : (%s) Edit(y/n)? ", _p->pname);
-        if (editval()) {
-            printf("Enter new value: ");
-            getstr(name);
-            strcpy(_p->pname, name);
-        }
-        getchar();
-        printf("Product Price: (%4.2f) Edit(y/n)? ", _p->price);
-        if (editval()) {
-            printf("Enter new Value: ");
-            _p->price = getdouble();
-        }
-        getchar();
-        printf("Product Qty  : (%4.2f) Edit(y/n)? ", _p->qty);
-        if (editval()) {
-            printf("Enter new Value: ");
-            _p->qty = getdouble();
-        }
-
         fseek(fp, pos - sizeof(Product), SEEK_SET); 
-        fwrite(_p, sizeof(Product), 1, fp);
+        fwrite(dataEntry(_p), sizeof(Product), 1, fp);
     } else {
 
         printf("record was not found for editing\n");
@@ -94,6 +73,33 @@ static bool editval()
         return true;
     } 
         return false;
+}
+
+static Product *dataEntry(Product* _p)
+{
+    char            name[25];   // product name
+
+    printf("Product name : (%s) Edit(y/n)? ", _p->pname);
+    if (editval()) {
+        printf("Enter new value: ");
+        getstr(name);
+        strcpy(_p->pname, name);
+    }
+    getchar();
+    printf("Product Price: (%4.2f) Edit(y/n)? ", _p->price);
+    if (editval()) {
+        printf("Enter new Value: ");
+        _p->price = getdouble();
+    }
+    getchar();
+    printf("Product Qty  : (%4.2f) Edit(y/n)? ", _p->qty);
+    if (editval()) {
+        printf("Enter new Value: ");
+        _p->qty = getdouble();
+    }
+
+    return _p;
+
 }
 
 /*
