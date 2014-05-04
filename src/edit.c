@@ -5,11 +5,13 @@
 #include <stdbool.h>
 #include "edit.h"
 #include "openfile.h"
+#include "getnumber.h"
 
 
 static bool editval();
-static double getnumber();
-
+/*
+ static double getnumber();
+*/
 void edit()
 {
 
@@ -94,6 +96,7 @@ static bool editval()
         return false;
 }
 
+/*
 static double getnumber()
 {
     double input;
@@ -107,3 +110,4 @@ static double getnumber()
         }
     }
 }
+*/
