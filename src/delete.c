@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <string.h>
 #include "delete.h"
+#include "openfile.h"
 
 void delete()
 {
@@ -15,9 +16,9 @@ void delete()
         exit(EXIT_FAILURE);
     }
 
-    FILE* fp;
-    FILE* fp_tmp;
-
+    FILE* fp = openFile("data.dat", READING);
+    FILE* fp_tmp = openFile("tmp.dat", APPENDING);
+/*
     fp = fopen("data.dat", "rb");
     if (!fp) {
         fprintf(stderr, "unable to open file for reading, %s\n", 
@@ -31,7 +32,7 @@ void delete()
                 strerror(errno));
         exit(EXIT_FAILURE);
     }
-
+*/
     printf("Enter product id to delete:");
     scanf("%d", &id);
 
