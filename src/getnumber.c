@@ -20,7 +20,6 @@ int getint()
 {
     int input;
     while (1) {
-        //printf("->");
         if (scanf("%d", &input) == 1 ) {
             return input;
         } else {
