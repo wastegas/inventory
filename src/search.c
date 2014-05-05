@@ -43,7 +43,7 @@ void search()
 
 }
 
-void printone(Product* _p) {
+static void printone(Product* _p) {
 
         printf("\nProduct ID   :\t%d\n", _p->pid);
         printf("Product Name :\t%s\n", _p->pname);
