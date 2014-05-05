@@ -4,6 +4,7 @@
 #include <string.h>
 #include "search.h"
 #include "openfile.h"
+#include "getinput.h"
 
 static void printone(Product*);
 
@@ -24,7 +25,7 @@ void search()
     FILE *fp = openFile("data.dat", READING);
 
     printf("Enter product id to display:");
-    scanf("%d", &id);
+    id = getint();
 
     while (fread(_p, sizeof(Product), 1, fp)) {
 
