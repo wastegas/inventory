@@ -28,14 +28,14 @@ static Product *dataEntry(Product *_p)
     char name[25];
 
     printf("\nProduct ID\t:");
-    _p->pid = getint();
+    getint(&_p->pid);
     printf("Product Name\t:");
     getstr(name);
     strcpy(_p->pname, name);
     printf("Product Price\t:");
-    _p->price = getdouble();
+    getdouble(&_p->price );
     printf("Product Qty\t:");
-    _p->qty = getdouble();
+    getdouble(&_p->qty);
 
    return _p;
 }

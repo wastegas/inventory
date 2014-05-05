@@ -11,7 +11,7 @@ static void printone(Product*);
 void search()
 {
 
-    unsigned int    id;
+    unsigned int    id = 0;
     int             found = 0;
 
     Product* _p = malloc(sizeof(*_p));
@@ -23,7 +23,7 @@ void search()
     FILE *fp = openFile("data.dat", READING);
 
     printf("Enter product id to display:");
-    id = getint();
+    getint(&id);
 
     while (fread(_p, sizeof(Product), 1, fp)) {
         if (_p->pid == id) {

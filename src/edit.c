@@ -26,7 +26,7 @@ void edit()
     FILE *fp = openFile("data.dat", WRITING);
 
     printf("Enter product id to edit:");
-    id = getint();
+    getint(&id);
 
     while (fread(_p, sizeof(Product), 1, fp)) {
         if (_p->pid == id) {
@@ -77,13 +77,13 @@ static Product *dataEntry(Product* _p)
     printf("Product Price: (%4.2f) Edit(y/n)? ", _p->price);
     if (editval()) {
         printf("Enter new Value: ");
-        _p->price = getdouble();
+        getdouble(&_p->price);
     }
     getchar();
     printf("Product Qty  : (%4.2f) Edit(y/n)? ", _p->qty);
     if (editval()) {
         printf("Enter new Value: ");
-        _p->qty = getdouble();
+        getdouble(&_p->qty);
     }
 
     return _p;
