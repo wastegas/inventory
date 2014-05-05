@@ -16,10 +16,8 @@ void search()
 
     Product* _p = malloc(sizeof(*_p));
     if (_p == NULL) {
-
         fprintf(stderr, "%s\n", strerror(errno));
         exit(EXIT_FAILURE);
-
     }
 
     FILE *fp = openFile("data.dat", READING);
@@ -28,25 +26,17 @@ void search()
     id = getint();
 
     while (fread(_p, sizeof(Product), 1, fp)) {
-
         if (_p->pid == id) {
-
             found = 1;
             fclose(fp);
             break;
-
         }
-
     }
 
     if (found) {
-
-      printone(_p);
-
+        printone(_p);
     } else {
-
         printf("No record found for product id %d\n", id);
-
     }
 
     free(_p);
