@@ -11,12 +11,10 @@ char *getstr(char* str)
     return str;
 }
 
-double getdouble()
+double *getdouble(double *input)
 {
-    double input;
     while (1) {
-        //printf("->");
-        if (scanf("%lf", &input) == 1 ) {
+        if (scanf("%lf", input) == 1 ) {
             return input;
         } else {
             printf("Invalid input...\n");
@@ -25,11 +23,10 @@ double getdouble()
     }
 }
 
-int getint()
+unsigned int *getint(unsigned int *input)
 {
-    int input;
     while (1) {
-        if (scanf("%d", &input) == 1 ) {
+        if (scanf("%ud", input) == 1 ) {
             return input;
         } else {
             printf("Invalid input...\n");

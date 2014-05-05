@@ -2,7 +2,7 @@
 #define _GETNUMBER_H_
 
 char *getstr(char*);
-double getdouble();
-int getint();
+double *getdouble(double*);
+unsigned int *getint(unsigned int*);
 
 #endif
