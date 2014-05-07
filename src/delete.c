@@ -4,6 +4,7 @@
 #include <string.h>
 #include "delete.h"
 #include "openfile.h"
+#include "getinput.h"
 
 void delete()
 {
@@ -20,7 +21,8 @@ void delete()
     FILE* fp_tmp = openFile("tmp.dat", APPENDING);
 
     printf("Enter product id to delete:");
-    scanf("%d", &id);
+    getint(&id);
+
 
     while (fread(_p, sizeof(Product), 1, fp)) {
         if (_p->pid == id) {
