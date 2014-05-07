@@ -1,6 +1,6 @@
 CC=	cc
 INCLUDES=	-I./include
-CFLAGS=	-std=c99	-Wall	-O3	-g	$(INCLUDES)
+CFLAGS=	-std=gnu11	-Wall	-O3	-g	$(INCLUDES)
 LDFLAGS=	-dynamiclib
 LFLAGS=	-L./lib
 LIBS=	-lprod
