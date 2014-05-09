@@ -2,13 +2,13 @@ CC=	cc
 INCLUDES=	-I./include
 CFLAGS=	-std=gnu11	-Wall	-O3	-g	$(INCLUDES)
 LDFLAGS=	-dynamiclib
-LFLAGS=	-L./lib
+LFLAGS=	-L./build/lib
 LIBS=	-lprod
 LDIR=./lib
 SDIR=./src
-BUILDDIR=./build
-LTARGET=$(LDIR)/libprod
+BUILDDIR=./build/bin
 TARGET=$(BUILDDIR)/prodinv
+LTARGET=./build/lib/libprod
 vpath	%.c	./src
 vpath	%.h	./include
 
