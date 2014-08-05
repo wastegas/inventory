@@ -1,14 +1,9 @@
-#include <stdlib.h>
 #include <ctype.h>
-#include <unistd.h>
-#include <termios.h>
-#include <string.h>
-#include <errno.h>
 #include "menu.h"
 
 void menu() {
 
-    int choice;
+    char choice;
 
     while ( choice != 'Q' ) {
     
