@@ -1,4 +1,4 @@
-CC=	cc
+CC=	gcc
 INCLUDES=	-I./include
 CFLAGS=	-std=gnu11	-Wall	-O3	-g	$(INCLUDES)
 LDFLAGS=	-dynamiclib
