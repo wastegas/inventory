@@ -1,7 +1,8 @@
 CC=	gcc
 INCLUDES=	-I./include
-CFLAGS=	-std=gnu11	-Wall	-O3	-g	$(INCLUDES)
-LDFLAGS=	-dynamiclib
+CFLAGS=	-std=c11	`pkg-config --cflags glib-2.0`	\
+			-Wall	-O3	-g	$(INCLUDES)
+LDFLAGS=	-dynamiclib	`pkg-config --libs glib-2.0`
 LFLAGS=	-L./build/lib
 LIBS=	-lprod
 LDIR=./lib
