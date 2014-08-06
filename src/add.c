@@ -27,7 +27,7 @@ static Product *dataEntry(Product *_p)
 {
     char name[25];
 
-    fputs("\nProduct ID\t:", stdout);
+    printf("\nProduct ID\t:");
     getint(&_p->pid);
     fputs("Product Name\t:", stdout);
     getstr(name);
