@@ -3,7 +3,7 @@
 
 typedef struct {
     unsigned int pid;
-    char pname[25];
+    char pname[15];
     double price;
     double qty;
 } Product;
