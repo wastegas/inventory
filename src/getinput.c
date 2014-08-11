@@ -10,9 +10,10 @@ char *getstr(char* str)
     size_t read_bytes = 0;
     char *input;
     size_t size = 25;
-    input = (char *)malloc(size + 1);
+    input = (char *)malloc(size);
     freopen("/dev/tty", "rw", stdin);
     getline(&input, &size, stdin);
+    input[strlen(input) - 1] = '\0';
     if (read_bytes == -1) {
       puts("input error");
       return NULL;
