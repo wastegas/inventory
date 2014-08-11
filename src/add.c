@@ -25,7 +25,7 @@ void add()
 
 static Product *dataEntry(Product *_p)
 {
-    char name[25];
+    char name[15];
 
     printf("\nProduct ID\t:");
     getint(&_p->pid);
