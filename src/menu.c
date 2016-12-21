@@ -3,7 +3,7 @@
 
 void menu() {
 
-    char choice;
+    char choice='\0';
 
     while ( choice != 'Q' ) {
     
