@@ -9,11 +9,14 @@ LDIR=./lib
 SDIR=./src
 BUILDDIR=./build/bin
 TARGET=$(BUILDDIR)/prodinv
-LTARGET=./build/lib/libprod
+LTARGET=libprod
+OUTDIR=./build/lib
+MKDIR_P=mkdir	-p
 vpath	%.c	./src
 vpath	%.h	./include
 
-$(TARGET):	$(SDIR)/main.c	$(LTARGET).dylib
+$(TARGET):	$(SDIR)/main.c	$(OUTDIR)/$(LTARGET).dylib
+	@mkdir	-p	$(BUILDDIR)
 	$(CC)	$(CFLAGS)	$(OBJS)	-o	$@	$^	$(INCLUDES)	$(LFLAGS)	$(LIBS)
 
 _LOBJ=	\
@@ -31,8 +34,11 @@ LOBJ=	$(patsubst	%,$(LDIR)/%,$(_LOBJ))
 $(LDIR)/%.o: $(SDIR)/%.c
 	$(CC)	$(CFLAGS)	-c	-fPIC	-o	$@	$<	$(INCLUDES)
 
-$(LTARGET).dylib:	$(LOBJ)
+$(OUTDIR)/$(LTARGET).dylib:	$(LOBJ)
+	@mkdir	-p	$(OUTDIR)
 	$(CC)	$(CFLAGS)	$(LDFLAGS)	-o	$@	$^	$(INCLUDES)	-lm
+
+
 
 clean:
 	rm	-rf	$(LDIR)/*	$(BUILDDIR)/*
